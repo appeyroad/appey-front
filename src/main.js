@@ -1,4 +1,4 @@
-const User = {
+/*const User = {
   template: `
     <div class="user">
       <h2>User {{ $route.params.id }}</h2>
@@ -31,4 +31,4 @@ const router = new VueRouter({
   ]
 })
 
-const app = new Vue({ router }).$mount('#app')
+const app = new Vue({ router }).$mount('#app')*/
