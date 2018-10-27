@@ -1,34 +1,22 @@
-/*const User = {
-  template: `
-    <div class="user">
-      <h2>User {{ $route.params.id }}</h2>
-      <router-view></router-view>
-    </div>
-  `
-}
+/*import Vue from 'vue'
+import App from './App.vue'
 
-const UserHome = { template: '<div>Home</div>' }
-const UserProfile = { template: '<div>Profile</div>' }
-const UserPosts = { template: '<div>Posts</div>' }
+Vue.config.productionTip = false
 
-const router = new VueRouter({
-  routes: [
-    { path: '/user/:id', component: User,
-      children: [
-        // UserHome will be rendered inside User's <router-view>
-        // when /user/:id is matched
-        { path: '', component: UserHome },
-				
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
-        { path: 'profile', component: UserProfile },
+new Vue({
+  render: h => h(App)
+}).$mount('#app')*/
 
-        // UserPosts will be rendered inside User's <router-view>
-        // when /user/:id/posts is matched
-        { path: 'posts', component: UserPosts }
-      ]
-    }
-  ]
+import Vue from 'vue'
+import App from './App.vue'
+import store from './store'
+import { currency } from './components/currency'
+
+Vue.config.productionTip = false
+Vue.filter('currency', currency)
+
+new Vue({
+  el: '#app',
+  store,
+  render: h => h(App)
 })
-
-const app = new Vue({ router }).$mount('#app')*/

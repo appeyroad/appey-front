@@ -1,3 +1,5 @@
+<!--Change Name to App.vue and Move to src-->
+
 <template>
   <div id="app">
     <TodoInput @submit="addItem" />
@@ -6,8 +8,8 @@
 </template>
 
 <script>
-import TodoList from './components/TodoList.vue'
-import TodoInput from './components/TodoInput.vue'
+import TodoList from './components/1-Todo/TodoList.vue'
+import TodoInput from './components/1-Todo/TodoInput.vue'
 export default {
   name: 'app',
   data () {

@@ -1,3 +1,5 @@
+<!--Change Name to App.vue and Move to src-->
+
 <template>
   <div id="app">
     <h1>Shopping Cart Example</h1>
