@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "Exercise",
   "version": "0.1.0",
   "private": true,
@@ -42,4 +43,25 @@
     "last 2 versions",
     "not ie <= 8"
   ]
+=======
+  "name": "nuxt-community-typescript",
+  "version": "2.3.4",
+  "private": true,
+  "dependencies": {
+    "@nuxtjs/axios": "5.3.6",
+    "nuxt": "2.3.4",
+    "nuxt-property-decorator": "1.3.1",
+    "vuex-class": "0.3.1"
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "devDependencies": {
+    "ts-loader": "5.3.3",
+    "typescript": "3.2.4"
+  }
+>>>>>>> f160401e40ba0da9c995e38f01caaf073fc84ed7
 }

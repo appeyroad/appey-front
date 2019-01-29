@@ -1,18 +1,18 @@
 <template>
-  <div id="app">
-    <h1>Shopping Cart Example</h1>
-    <hr>
-    <h2>Products</h2>
-    <ProductList/>
-    <hr>
-    <ShoppingCart/>
+  <div class="chatapp">
+    <thread-section></thread-section>
+    <message-section></message-section>
   </div>
 </template>
 
 <script>
-import ProductList from './components/2-Cart/ProductList.vue'
-import ShoppingCart from './components/2-Cart/ShoppingCart.vue'
+import ThreadSection from './components/3-Chat/ThreadSection.vue'
+import MessageSection from './components/3-Chat/MessageSection.vue'
 export default {
-  components: { ProductList, ShoppingCart }
+  name: 'App',
+  components: {
+    ThreadSection,
+    MessageSection
+  }
 }
 </script>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_Store
 node_modules
 /dist
@@ -19,3 +20,19 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+=======
+# dependencies
+/node_modules
+
+# logs
+npm-debug.log
+
+# Nuxt build
+/.nuxt
+
+# Nuxt generate
+/dist
+/temp
+package-lock.json
+yarn.lock
+>>>>>>> f160401e40ba0da9c995e38f01caaf073fc84ed7
