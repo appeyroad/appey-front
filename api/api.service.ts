@@ -25,6 +25,53 @@ class ApiService {
         });
     }
 
+    isUser(email:String, pw:String) : Promise<any> {
+        return new Promise<any>( (resolve, reject) => {
+            let url = `${ApiService.endPoint}/isuser`;
+
+            let params = {
+                id:email,
+                pw:pw
+            }
+
+            axios
+                .put(url, params)
+                .then(res => {
+                    if (res.data.result == true) {
+                        console.log(res.data)
+                        resolve(res.data.user);
+                    }
+                    else {
+                        reject(res.data.err);
+                    }
+                })
+                .catch(err => {
+                    reject();
+                });
+        } )
+    }
+
+    getUserById(userid:String) : Promise<any> {
+        return new Promise<any>( (resolve,reject) => {
+            let url = `${ApiService.endPoint}/getuser/${userid}`;
+
+            axios
+                .get(url)
+                .then(res => {
+                    if(res.data.result == true) {
+                        console.log(res.data)
+                        resolve(res.data.user)
+                    }
+                    else {
+                        reject(res.data.err)
+                    }
+                })
+                .catch(err => {
+                    reject();
+                })
+        } )
+    }
+
 }
 const apiService = new ApiService();
 export default apiService;

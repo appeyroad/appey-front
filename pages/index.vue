@@ -1,9 +1,32 @@
 <template>
   <section>
-    <h1 class="header">Nuxt TypeScript Starter</h1>
+    <h1 class="header">
+      <img class="markImg" src="../static/appey.jpeg" alt="appeyroadJPEG">
+      <span>Appey Road</span>
+    </h1>
     <div class="body">
       <!-- <Card v-for="person in people" :key="person.id" :person="person"
       ></Card> -->
+      <div class="description">
+        <span>Hello, This is Appey Road Main Website.</span>
+      </div>
+
+      <table class='login'>
+        <tbody>
+        <tr class="id">
+          <td>ID: </td>
+          <td><input v-model="id" type="text"></td>
+        </tr>
+        <tr class="pw">
+          <td>PW: </td>
+          <td><input v-model="pw" type="text"></td>
+          <td><button @click="login(id, pw)">LogIN</button></td>
+        </tr>
+        
+        </tbody>
+      </table>
+
+      <div>{{id}} - {{pw}}</div>
       <button class="users" @click="getUsers">get Users!</button>
       <br><br>
       <div v-for="user in users" :key="user._id">
@@ -22,20 +45,26 @@ import {
 } from "nuxt-property-decorator"
 import { State } from "vuex-class"
 // import { Person } from "~/types";
-// import Card from "~/components/Card.vue"
+import Card from "~/components/Card.vue"
 import apiService from '../api/api.service'
+import VueRouter, {Route} from 'vue-router'
 
 @Component({
   components: {
-    // Card
+    Card
   },
   data: function() {
     return {
-      users: []
+      users: [],
+      id: '',
+      pw: ''
     }
   }
 })
-export default class extends Vue {
+
+export default class Main extends Vue {
+
+  $router: VueRouter
   // @State people: Person
   getUsers() {
     apiService.getUsers().then(res => {
@@ -43,29 +72,72 @@ export default class extends Vue {
       this.$data.users = res;
     })
   }
+
+  login(id, pw) {
+    apiService.isUser(id, pw).then(user => {
+      console.log('isUser: ', user)
+      if(user.length != 0) {
+        console.log('Login Success!!')
+
+        this.$store.commit('setUser', user)
+        this.$router.push(`/user/${user[0]._id}`)
+      } else {
+        alert('정식 회원이 아닙니다!!')
+      }
+    })
+  }
+
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .header {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: auto;
+  width:50%;
+  padding: 10px;
+  text-align: center;
+}
+
+.markImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 100px;
+    width: 200px;
+    font-size: 12px;
 }
 
 .body {
-  font-size: 1.8rem;
-  line-height: 1.618;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
   max-width: 38em;
   margin: auto;
-  color: #4a4a4a;
-  background-color: #f9f9f9;
   padding: 13px;
+  margin-top: 15px;
+  .description {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+  }
+  .login {
+    margin-top:50px;
+    text-align: center;
+    border: 0;
+    width: 30%;
+    padding-left: 30%;
+  }
 }
 
 .users {
   background-color: royalblue;
   border: none;
   color: white;
-  padding: 15px 32px;
+  
   text-align: center;
   text-decoration: none;
   display: inline-block;
