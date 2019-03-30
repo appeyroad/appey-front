@@ -22,11 +22,13 @@
           <td><input v-model="pw" type="text"></td>
           <td><button @click="login(id, pw)">LogIN</button></td>
         </tr>
-        
+        <tr class="join">
+          <td></td>
+          <td><button @click="join">회원가입</button></td>
+        </tr>
         </tbody>
       </table>
 
-      <div>{{id}} - {{pw}}</div>
       <button class="users" @click="getUsers">get Users!</button>
       <br><br>
       <div v-for="user in users" :key="user._id">
@@ -87,6 +89,10 @@ export default class Main extends Vue {
     })
   }
 
+  join() {
+    this.$router.push(`/join`);
+  }
+
 }
 </script>
 
@@ -130,7 +136,11 @@ export default class Main extends Vue {
     border: 0;
     width: 30%;
     padding-left: 30%;
+    .join {
+      width: 100%;
+    }
   }
+
 }
 
 .users {
