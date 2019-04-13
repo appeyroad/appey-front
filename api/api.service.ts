@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 
 class ApiService {
 
-    static endPoint: string = 'http://localhost:3001';
+    static endPoint: string = 'http://localhost:3001/api';
 
     getUsers(): Promise<any> {
 
@@ -27,7 +27,7 @@ class ApiService {
 
     isUser(email:String, pw:String) : Promise<any> {
         return new Promise<any>( (resolve, reject) => {
-            let url = `${ApiService.endPoint}/isuser`;
+            let url = `${ApiService.endPoint}/users/isuser`;
 
             let params = {
                 id:email,
@@ -53,7 +53,7 @@ class ApiService {
 
     getUserById(userid:String) : Promise<any> {
         return new Promise<any>( (resolve,reject) => {
-            let url = `${ApiService.endPoint}/getuser/${userid}`;
+            let url = `${ApiService.endPoint}/users/getuser/${userid}`;
 
             axios
                 .get(url)
@@ -74,7 +74,7 @@ class ApiService {
 
     addUser(userinfo:any) : Promise<any> {
         return new Promise<any>( (resolve, reject) => {
-            let url = `${ApiService.endPoint}/adduser`;
+            let url = `${ApiService.endPoint}/users/adduser`;
 
             let params = {
                 id:userinfo.id,
