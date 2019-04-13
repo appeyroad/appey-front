@@ -2,7 +2,6 @@
 
     <div class="join">
         <div>환영합니다!</div>
-
         <table class="inputs">
             <tr><span>Email:</span><input v-model="id" type="text"></tr>
 
@@ -16,6 +15,7 @@
 </template>
 
 <script lang="ts">
+
 import {
   Component,
   Vue
@@ -40,6 +40,7 @@ import VueRouter, {Route} from 'vue-router'
 })
 
 export default class Join extends Vue {
+
     addUser() {
         let userinfo = this.$data 
         console.log('userInfo: ', userinfo)

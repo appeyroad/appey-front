@@ -4,6 +4,9 @@
       <img class="markImg" src="../static/appey.jpeg" alt="appeyroadJPEG">
       <span>Appey Road</span>
     </h1>
+    <head>
+      <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    </head>
     <div class="body">
       <!-- <Card v-for="person in people" :key="person.id" :person="person"
       ></Card> -->
@@ -28,7 +31,10 @@
         </tr>
         </tbody>
       </table>
-
+      <br><br><br>
+      <a id="kakao-login-btn" class="kakaobutton"></a>
+      <a href="http://developers.kakao.com/logout"></a>
+      <br><br>
       <button class="users" @click="getUsers">get Users!</button>
       <br><br>
       <div v-for="user in users" :key="user._id">
@@ -41,6 +47,7 @@
 </template>
 
 <script lang="ts">
+
 import {
   Component,
   Vue
@@ -67,6 +74,24 @@ import VueRouter, {Route} from 'vue-router'
 export default class Main extends Vue {
 
   $router: VueRouter
+
+  mounted() {
+    // let Kakao = document.createElement('script')
+    // Kakao.setAttribute('src', "https://developers.kakao.com/sdk/js/kakao.min.js")
+    // document.head.appendChild(Kakao)
+
+    Kakao.init('a7cb73efbac3d1faad0d1d6632ac9867'); 
+    Kakao.Auth.createLoginButton({
+      container: '#kakao-login-btn',
+      success: function(authObj) {
+        alert(JSON.stringify(authObj));
+        // https://kauth.kakao.com/oauth/token
+      },
+      fail: function(err) {
+        alert(JSON.stringify(err));
+      }
+    })
+  }
   // @State people: Person
   getUsers() {
     apiService.getUsers().then(res => {
@@ -97,12 +122,18 @@ export default class Main extends Vue {
 </script>
 
 <style lang="scss" scoped>
+
 .header {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: auto;
   width:50%;
   padding: 10px;
   text-align: center;
+}
+
+.kakaobutton{
+  margin-left: 150px;
+  margin-top: 100px;
 }
 
 .markImg {
